@@ -82,8 +82,7 @@ export default function LoginPage() {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="seu@email.com"
                 required
-                className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:border-transparent transition-all text-gray-800 placeholder-gray-400"
-                style={{ focusRingColor: "#A29BFE" }}
+                className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#A29BFE] focus:border-transparent transition-all text-gray-800 placeholder-gray-400"
               />
             </div>
 

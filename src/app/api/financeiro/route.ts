@@ -47,7 +47,7 @@ export async function GET(request: NextRequest) {
     // Agrupar por dia para o gráfico
     const porDia: Record<string, { data: string; total: number; quantidade: number }> = {};
 
-    pedidos.forEach((pedido) => {
+    pedidos.forEach((pedido: any) => {
       const dia = pedido.criado_em
         ? new Date(pedido.criado_em).toLocaleDateString("pt-BR", { day: "2-digit", month: "2-digit" })
         : "Sem data";
@@ -62,13 +62,13 @@ export async function GET(request: NextRequest) {
     const dadosGrafico = Object.values(porDia);
 
     // Totais gerais
-    const totalFaturamento = pedidos.reduce((acc, p) => acc + Number(p.total || 0), 0);
+    const totalFaturamento = pedidos.reduce((acc: number, p: any) => acc + Number(p.total || 0), 0);
     const totalPedidos = pedidos.length;
     const ticketMedio = totalPedidos > 0 ? totalFaturamento / totalPedidos : 0;
 
     // Contagens por tipo de entrega
-    const entregas = pedidos.filter((p) => p.tipo_entrega === "entrega").length;
-    const retiradas = pedidos.filter((p) => p.tipo_entrega === "retirada").length;
+    const entregas = pedidos.filter((p: any) => p.tipo_entrega === "entrega").length;
+    const retiradas = pedidos.filter((p: any) => p.tipo_entrega === "retirada").length;
 
     return NextResponse.json({
       dadosGrafico,
