@@ -232,7 +232,7 @@ export default function FinanceiroPage() {
                       <XAxis dataKey="data" tick={{ fontSize: 12 }} />
                       <YAxis tick={{ fontSize: 12 }} />
                       <Tooltip
-                        formatter={(value: number) => [formatarReais(value), "Faturamento"]}
+                        formatter={(value: any) => [formatarReais(Number(value) || 0), "Faturamento"]}
                         contentStyle={{ borderRadius: "12px", border: "none", boxShadow: "0 4px 12px rgba(0,0,0,0.1)" }}
                       />
                       <Bar dataKey="total" fill="#A29BFE" radius={[8, 8, 0, 0]} />
@@ -259,7 +259,7 @@ export default function FinanceiroPage() {
                       <XAxis dataKey="data" tick={{ fontSize: 12 }} />
                       <YAxis tick={{ fontSize: 12 }} />
                       <Tooltip
-                        formatter={(value: number) => [value, "Pedidos"]}
+                        formatter={(value: any) => [Number(value) || 0, "Pedidos"]}
                         contentStyle={{ borderRadius: "12px", border: "none", boxShadow: "0 4px 12px rgba(0,0,0,0.1)" }}
                       />
                       <Legend />
