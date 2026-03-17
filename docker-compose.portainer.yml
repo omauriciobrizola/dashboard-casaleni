@@ -1,0 +1,23 @@
+# Docker Compose para o Portainer (Web Editor)
+# Usa imagem pré-construída localmente no servidor
+# Construa a imagem antes com: docker build -t dashboard-casaleni:latest .
+
+services:
+  dashboard:
+    image: dashboard-casaleni:latest
+    container_name: dashboard-casaleni
+    restart: unless-stopped
+    ports:
+      - "3001:3000"
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+      - ADMIN_EMAIL=${ADMIN_EMAIL}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD}
+      - NEXTAUTH_SECRET=${NEXTAUTH_SECRET}
+      - NEXTAUTH_URL=${NEXTAUTH_URL}
+    networks:
+      - postgres_default
+
+networks:
+  postgres_default:
+    external: true
