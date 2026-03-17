@@ -1,0 +1,19 @@
+# Docker Compose para o Dashboard Casa Lení
+# Roda o dashboard na mesma rede do PostgreSQL existente
+
+services:
+  dashboard:
+    build: .
+    container_name: dashboard-casaleni
+    restart: unless-stopped
+    ports:
+      - "3001:3000"
+    env_file:
+      - .env
+    depends_on: []
+    networks:
+      - postgres_default
+
+networks:
+  postgres_default:
+    external: true
